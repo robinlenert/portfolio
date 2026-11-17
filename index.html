@@ -188,6 +188,13 @@
   .scol li{font-size:.82rem;color:var(--muted);background:var(--panel-2);border:1px solid var(--border);padding:4px 10px;border-radius:7px}
 
   /* ---- contact ---- */
+  .pdfmodal{position:fixed;inset:0;z-index:100;background:rgba(5,8,13,.88);backdrop-filter:blur(4px);display:none;flex-direction:column;padding:20px}
+  .pdfmodal.open{display:flex}
+  .pdfmodal .pbar{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+  .pdfmodal .pbar .pt{flex:1;font-family:var(--mono);font-size:.82rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .pdfmodal .pbtn{font-family:var(--mono);font-size:.78rem;color:var(--txt);background:var(--panel);border:1px solid var(--border-2);padding:8px 13px;border-radius:8px;cursor:pointer;text-decoration:none;white-space:nowrap}
+  .pdfmodal .pbtn:hover{border-color:var(--accent);color:var(--accent)}
+  .pdfmodal iframe{flex:1;width:100%;border:1px solid var(--border);border-radius:8px;background:#fff}
   .contact{background:linear-gradient(135deg,var(--panel),var(--panel-2));border:1px solid var(--border);border-radius:16px;padding:34px;text-align:center}
   .contact h2{font-size:clamp(1.4rem,3vw,2rem);margin-bottom:10px}
   .contact p{color:var(--muted);max-width:520px;margin:0 auto 22px}
@@ -319,7 +326,7 @@
     <div class="profile">
       <div class="card">
         <p>Je réalise mon BTS en <strong>alternance au sein du service informatique de <em>La Nouvelle République</em></strong> (presse quotidienne régionale).</p>
-        <p>J'y interviens sur l'<strong>exploitation et la maintenance du parc et du réseau</strong> : déploiement de logiciels sur les postes (solution UEM), administration et <strong>sécurisation des équipements réseau</strong> — surtout du <strong>Fortinet</strong>, et du Cisco de moins en moins —, configuration de VLAN et supervision.</p>
+        <p>J'y interviens sur l'<strong>exploitation et la maintenance du parc et du réseau</strong>, ainsi que sur le <strong>support informatique auprès des utilisateurs</strong> : prise en charge et résolution des demandes, déploiement de logiciels sur les postes (solution UEM), administration et <strong>sécurisation des équipements réseau</strong> (Fortinet, Cisco), configuration de VLAN et supervision.</p>
       </div>
       <div class="card">
         <div class="specs">
@@ -617,6 +624,31 @@
     },{rootMargin:"-45% 0px -50% 0px"});
     secs.forEach(function(s){ob.observe(s);});
   }
+})();
+</script>
+<!-- PDF viewer modal -->
+<div class="pdfmodal" id="pdfmodal" role="dialog" aria-modal="true" aria-label="Aperçu du document">
+  <div class="pbar">
+    <span class="pt" id="pdfTitle">document.pdf</span>
+    <a class="pbtn" id="pdfExt" href="#" target="_blank" rel="noopener">Ouvrir dans un onglet ↗</a>
+    <button class="pbtn" id="pdfClose" type="button">Fermer ✕</button>
+  </div>
+  <iframe id="pdfFrame" title="Aperçu du document"></iframe>
+</div>
+<script>
+(function(){
+  var modal=document.getElementById('pdfmodal'),frame=document.getElementById('pdfFrame'),
+      ext=document.getElementById('pdfExt'),ttl=document.getElementById('pdfTitle'),
+      closeBtn=document.getElementById('pdfClose');
+  function openPdf(url){frame.src=url;ext.href=url;ttl.textContent=url.split('/').pop();modal.classList.add('open');document.body.style.overflow='hidden';}
+  function closePdf(){modal.classList.remove('open');frame.src='about:blank';document.body.style.overflow='';}
+  document.addEventListener('click',function(e){
+    var a=e.target.closest?e.target.closest('a.doc'):null;
+    if(a&&a.getAttribute('href')){e.preventDefault();openPdf(a.getAttribute('href'));}
+  });
+  closeBtn.addEventListener('click',closePdf);
+  modal.addEventListener('click',function(e){if(e.target===modal)closePdf();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closePdf();});
 })();
 </script>
 </body>
