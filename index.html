@@ -264,7 +264,7 @@
       <span class="chip ok"><span class="d"></span>En alternance</span>
       <span class="chip"><span class="d"></span>Tours (37)</span>
       <span class="chip"><span class="d"></span>Session 2025 · SISR</span>
-      <span class="chip warn"><span class="d"></span>16 réalisations</span>
+      <span class="chip warn"><span class="d"></span>18 réalisations</span>
     </div>
   </div>
 </div>
@@ -462,6 +462,14 @@
      d:"En entreprise : mise à jour de l'IOS d'un switch Cisco Catalyst 3750 par TFTP, puis durcissement complet (VTP, NTP, désactivation de services, AAA, SNMPv3, SSH, bannière). Procédure fournie anonymisée.",
      tech:["Cisco Catalyst 3750","IOS / TFTP","SNMPv3","AAA","Hardening"],
      comp:["Vérifier la continuité d'un service","Exploiter référentiels & standards"],doc:"docs/maj-switch-cisco-3750.pdf"},
+    {t:"Masterisation de postes — ManageEngine OS Deployer (PXE)",dom:"Système",badge:"ent",
+     d:"En entreprise : préparation et masterisation de nouveaux postes selon le profil métier (journalistes, DSI, réseau presse…) — identification du master dans Endpoint Central, déploiement par boot réseau PXE / OS Deployer (WinPE), puis contrôles de conformité (agents de sécurité, mises à jour) avant mise en service.",
+     tech:["ManageEngine OS Deployer","PXE / WinPE","Masterisation","SentinelOne / Fortinet","Windows 11"],
+     comp:["Déployer un service","Mettre à disposition un service"],doc:"docs/masterisation-pc.pdf"},
+    {t:"Portail de mot de passe en libre-service — ADSelfService Plus",dom:"Sécurité",badge:"ent",
+     d:"En entreprise : installation et configuration du portail ADSelfService Plus (ManageEngine) pour la réinitialisation de mot de passe et le déverrouillage de compte en libre-service — intégration Active Directory, sécurisation HTTPS par certificat SSL, MFA et déploiement de l'agent, avec tests d'inscription et de réinitialisation côté utilisateur.",
+     tech:["ADSelfService Plus","Active Directory","Certificat SSL / HTTPS","MFA","Self-service password"],
+     comp:["Déployer un service","Habilitations & sécurité du service"],doc:"docs/adselfservice-plus.pdf"},
     {t:"Atelier du Parc — conception d'infrastructure (projet)",dom:"Projet",badge:"",
      d:"Projet en binôme : conception complète de l'infrastructure d'une PME (8 postes), à budget et délai contraints — analyse des besoins, architecture (Active Directory Windows Server 2022, VLAN, pare-feu, NAS/sauvegarde RAID 1), WBS, chiffrage et planification par diagramme de Gantt.",
      tech:["Windows Server 2022","Active Directory","VLAN","Diagramme de Gantt","WBS","Chiffrage"],
