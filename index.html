@@ -257,7 +257,7 @@
       <span class="chip ok"><span class="d"></span>En alternance</span>
       <span class="chip"><span class="d"></span>Tours (37)</span>
       <span class="chip"><span class="d"></span>Session 2025 · SISR</span>
-      <span class="chip warn"><span class="d"></span>15 réalisations</span>
+      <span class="chip warn"><span class="d"></span>16 réalisations</span>
     </div>
   </div>
 </div>
@@ -269,8 +269,8 @@
     <div class="profile">
       <div class="card">
         <p>Étudiant en <strong>BTS SIO option SISR</strong> (Solutions d'Infrastructure, Systèmes et Réseaux) à <strong>Notre-Dame-La-Riche</strong>, à Tours, en <strong>alternance</strong> via le CFA ISCB.</p>
-        <p>Mon parcours est un peu atypique : passé par le <strong>montage vidéo</strong> et les <strong>systèmes numériques</strong>, je me suis réorienté vers ce qui me passionne vraiment — <strong>construire, sécuriser et fiabiliser des infrastructures</strong>. Monter un labo, mettre deux serveurs en haute disponibilité, automatiser un déploiement : c'est là que je suis à l'aise.</p>
-        <p>J'aime autant la <strong>ligne de commande</strong> que comprendre pourquoi un paquet ne passe pas d'un réseau à l'autre. Ce portfolio regroupe mes réalisations, rattachées aux compétences du référentiel.</p>
+        <p>Mon parcours n'est pas linéaire : passé par le <strong>montage vidéo</strong> et les <strong>systèmes numériques</strong>, je me suis orienté vers l'<strong>administration systèmes et réseaux</strong>. Concrètement, je monte des labos, je configure des switchs et des serveurs, je mets en place de la haute disponibilité et j'automatise des déploiements.</p>
+        <p>J'aime le <strong>dépannage réseau et système</strong> : partir de quelque chose qui ne fonctionne pas et remonter jusqu'à la cause. Ce portfolio rassemble mes réalisations, en TP comme en entreprise.</p>
       </div>
       <div class="card">
         <div class="specs">
@@ -319,7 +319,7 @@
     <div class="profile">
       <div class="card">
         <p>Je réalise mon BTS en <strong>alternance au sein du service informatique de <em>La Nouvelle République</em></strong> (presse quotidienne régionale).</p>
-        <p>J'y interviens sur l'<strong>exploitation et la maintenance du parc et du réseau</strong> : déploiement de logiciels sur les postes via une solution UEM, administration et <strong>sécurisation d'équipements réseau</strong> (switchs Cisco), configuration de VLAN et supervision. Un cadre de production réel, où la rigueur et la continuité de service comptent vraiment.</p>
+        <p>J'y interviens sur l'<strong>exploitation et la maintenance du parc et du réseau</strong> : déploiement de logiciels sur les postes (solution UEM), administration et <strong>sécurisation des équipements réseau</strong> — surtout du <strong>Fortinet</strong>, et du Cisco de moins en moins —, configuration de VLAN et supervision.</p>
       </div>
       <div class="card">
         <div class="specs">
@@ -369,7 +369,7 @@
   <div class="wrap">
     <div class="contact">
       <h2>Prendre contact</h2>
-      <p>Toujours partant pour parler infra, réseau ou alternance. N'hésitez pas à me joindre.</p>
+      <p>Pour toute question ou opportunité, vous pouvez me joindre par mail.</p>
       <div class="clinks">
         <a class="btn primary" href="mailto:robinlenert05@gmail.com">✉ robinlenert05@gmail.com</a>
         <a class="btn" href="#" id="linkedin">in · LinkedIn</a>
@@ -399,7 +399,7 @@
     {t:"$ cat /etc/role",c:"pr"},
     {t:"BTS SIO · SISR — systèmes & réseaux",c:"line"},
     {t:"$ systemctl status portfolio",c:"pr"},
-    {t:"● actif — 15 services opérationnels",c:"ok"}
+    {t:"● actif — 16 services opérationnels",c:"ok"}
   ];
   var boot = document.getElementById('boot');
   function esc(s){return s.replace(/[&<>]/g,function(m){return({'&':'&amp;','<':'&lt;','>':'&gt;'})[m];});}
@@ -408,7 +408,7 @@
   } else {
     var li=0, ci=0, html="";
     function step(){
-      if(li>=bootLines.length){boot.innerHTML=html+'<span class="cursor"></span>';return;}
+      if(li>=bootLines.length){boot.innerHTML=html+'<span class="cursor"></span>';setTimeout(function(){li=0;ci=0;html="";step();},3500);return;}
       var cur=bootLines[li];
       if(ci===0) html+='<div class="line '+cur.c+'"></div>';
       ci++;
@@ -455,6 +455,10 @@
      d:"En entreprise : mise à jour de l'IOS d'un switch Cisco Catalyst 3750 par TFTP, puis durcissement complet (VTP, NTP, désactivation de services, AAA, SNMPv3, SSH, bannière). Procédure fournie anonymisée.",
      tech:["Cisco Catalyst 3750","IOS / TFTP","SNMPv3","AAA","Hardening"],
      comp:["Vérifier la continuité d'un service","Exploiter référentiels & standards"],doc:"docs/maj-switch-cisco-3750.pdf"},
+    {t:"Atelier du Parc — conception d'infrastructure (projet)",dom:"Projet",badge:"",
+     d:"Projet en binôme : conception complète de l'infrastructure d'une PME (8 postes), à budget et délai contraints — analyse des besoins, architecture (Active Directory Windows Server 2022, VLAN, pare-feu, NAS/sauvegarde RAID 1), WBS, chiffrage et planification par diagramme de Gantt.",
+     tech:["Windows Server 2022","Active Directory","VLAN","Diagramme de Gantt","WBS","Chiffrage"],
+     comp:["Analyser les objectifs d'un projet","Planifier les activités"],doc:"docs/atelier-du-parc.pdf"},
     {t:"Reverse proxy & conteneurs Docker",dom:"Conteneurs",badge:"",
      d:"Infrastructure de services web conteneurisés (Nextcloud, WordPress, Vaultwarden) derrière un reverse proxy Nginx Proxy Manager, HTTPS via certificat TLS wildcard, conteneurs isolés sur un réseau interne.",
      tech:["Docker","Docker Compose","Nginx Proxy Manager","TLS wildcard","Debian 12"],
@@ -509,7 +513,7 @@
      comp:["Traiter des demandes concernant les applications"]}
   ];
 
-  var doms=["Tous","Réseau","Système","Virtualisation","Conteneurs","Automatisation","Sécurité","Support"];
+  var doms=["Tous","Réseau","Système","Projet","Virtualisation","Conteneurs","Automatisation","Sécurité","Support"];
   var badges={cr:{t:"CR joint",cls:"cr"},ent:{t:"En entreprise",cls:""}};
 
   var pc=document.getElementById('projects');
@@ -565,9 +569,10 @@
       {s:"part",t:"Participer à l'évolution d'un site Web (WordPress)"},
       {s:"off",t:"Référencer les services en ligne & mesurer la visibilité"}
     ]},
-    {l:"D",h:"Travailler en mode projet",warn:true,items:[
-      {s:"part",t:"Analyser les objectifs & modalités d'un projet"},
-      {s:"off",t:"Planifier les activités / suivre les écarts"}
+    {l:"D",h:"Travailler en mode projet",warn:false,items:[
+      {s:"on",t:"Analyser les objectifs & modalités d'un projet"},
+      {s:"on",t:"Planifier les activités"},
+      {s:"part",t:"Évaluer les indicateurs & analyser les écarts"}
     ]}
   ];
   var mk={on:"▣",part:"▣",off:"▢"};
