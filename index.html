@@ -56,12 +56,14 @@
   .led{width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 rgba(74,222,128,.6);animation:pulse 2.4s infinite}
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(74,222,128,.55)}70%{box-shadow:0 0 0 7px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
   .brand .dim{color:var(--faint)}
-  nav.links{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
-  nav.links a{font-family:var(--mono);font-size:.8rem;color:var(--muted);padding:7px 11px;border-radius:7px;transition:.18s}
+  nav.links{margin-left:auto;display:flex;gap:2px;flex-wrap:nowrap}
+  @media (max-width:1180px){.clock{display:none}}
+  @media (max-width:1060px){nav.links{display:none}.brand{margin-right:auto}}
+  nav.links a{font-family:var(--mono);font-size:.8rem;color:var(--muted);padding:7px 9px;white-space:nowrap;border-radius:7px;transition:.18s}
   nav.links a:hover{color:var(--txt);background:var(--panel)}
   nav.links a.active{color:var(--accent);background:rgba(45,212,191,.08)}
   .clock{font-family:var(--mono);font-size:.78rem;color:var(--faint);white-space:nowrap}
-  .theme{display:inline-flex;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+  .theme{flex:none;display:inline-flex;border:1px solid var(--border);border-radius:8px;overflow:hidden}
   .theme button{background:transparent;color:var(--muted);border:0;padding:6px 11px;font-size:.72rem;cursor:pointer;font-family:var(--mono);transition:.15s}
   .theme button:hover{color:var(--txt)}
   .theme button.active{background:var(--accent);color:var(--bg);font-weight:700}
@@ -187,6 +189,38 @@
   .scol ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:7px}
   .scol li{font-size:.82rem;color:var(--muted);background:var(--panel-2);border:1px solid var(--border);padding:4px 10px;border-radius:7px}
 
+  /* ---- certifications ---- */
+  .cert-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .subh{display:flex;align-items:center;gap:12px;margin:0 0 16px;font-family:var(--mono);font-size:.78rem;color:var(--accent);text-transform:uppercase;letter-spacing:.07em;font-weight:700}
+  .subh i{flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
+  .cert-grid + .subh{margin-top:34px}
+  .cert .mod .dt{font-family:var(--mono);font-size:.68rem;color:var(--faint);white-space:nowrap}
+  .cert .all{display:inline-flex;align-items:center;gap:7px;align-self:flex-start;font-family:var(--mono);font-size:.74rem;color:var(--accent-2);border:1px solid var(--border-2);padding:6px 11px;border-radius:7px;transition:.16s}
+  .cert .all:hover{border-color:var(--accent-2);transform:translateX(2px)}
+  .cert{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:13px}
+  .cert .ch{display:flex;align-items:flex-start;gap:13px}
+  .cert .logo{width:42px;height:42px;border-radius:9px;display:grid;place-items:center;flex:none;font-family:var(--mono);font-weight:700;font-size:.78rem;border:1px solid var(--border-2);background:var(--panel-2);color:var(--accent)}
+  .cert h3{font-size:1.02rem;font-weight:600}
+  .cert .org{font-family:var(--mono);font-size:.74rem;color:var(--faint);margin-top:3px}
+  .cert .stt{margin-left:auto;font-family:var(--mono);font-size:.66rem;padding:3px 8px;border-radius:5px;white-space:nowrap;border:1px solid}
+  .cert .stt.ok{color:var(--ok);border-color:rgba(74,222,128,.4);background:rgba(74,222,128,.07)}
+  .cert .stt.wip{color:var(--warn);border-color:rgba(251,191,36,.4);background:rgba(251,191,36,.07)}
+  .cert .stt.plan{color:var(--accent-2);border-color:rgba(56,189,248,.4);background:rgba(56,189,248,.07)}
+  .cert p{color:var(--muted);font-size:.88rem;margin:0}
+  .cert .bar{height:6px;border-radius:4px;background:var(--panel-2);border:1px solid var(--border);overflow:hidden}
+  .cert .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+  .cert .pct{font-family:var(--mono);font-size:.72rem;color:var(--faint);display:flex;justify-content:space-between;margin-top:-7px}
+  .cert .mods{display:flex;flex-direction:column;border-top:1px dashed var(--border);padding-top:6px}
+  .cert .mod{display:flex;align-items:center;gap:10px;padding:6px 0;font-size:.84rem;color:var(--muted)}
+  .cert .mod .mk{font-family:var(--mono);font-size:.74rem;flex:none;width:14px;color:var(--faint)}
+  .cert .mod.on{color:var(--txt)} .cert .mod.on .mk{color:var(--ok)}
+  .cert .mod .rt{margin-left:auto;display:flex;align-items:center;gap:8px}
+  .cert .mod .sc{font-family:var(--mono);font-size:.72rem;color:var(--ok);white-space:nowrap}
+  .cert .mod a.doc{font-family:var(--mono);font-size:.68rem;color:var(--accent-2);border:1px solid var(--border-2);padding:2px 7px;border-radius:5px;white-space:nowrap}
+  .cert .mod a.doc:hover{border-color:var(--accent-2)}
+  .cert.slot{align-self:start;border-style:dashed;background:transparent;justify-content:center;align-items:center;text-align:center;min-height:150px}
+  .cert.slot p{font-family:var(--mono);font-size:.78rem;color:var(--faint)}
+
   /* ---- contact ---- */
   .pdfmodal{position:fixed;inset:0;z-index:100;background:rgba(5,8,13,.88);backdrop-filter:blur(4px);display:none;flex-direction:column;padding:20px}
   .pdfmodal.open{display:flex}
@@ -209,8 +243,9 @@
   .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:.76rem;color:var(--faint)}
 
   @media (max-width:760px){
+    .cert .mod .dt{display:none}
     .profile{grid-template-columns:1fr}
-    .grid,.comp-grid{grid-template-columns:1fr}
+    .grid,.comp-grid,.cert-grid{grid-template-columns:1fr}
     .stack{grid-template-columns:1fr}
     nav.links{display:none}
     .clock{display:none}
@@ -232,6 +267,7 @@
       <a href="#parcours">parcours</a>
       <a href="#entreprise">alternance</a>
       <a href="#realisations">réalisations</a>
+      <a href="#certifications">formations</a>
       <a href="#competences">compétences</a>
       <a href="#stack">stack</a>
       <a href="#contact">contact</a>
@@ -349,10 +385,22 @@
   </div>
 </section>
 
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="wrap">
+    <div class="sec-head"><span class="idx">05</span><h2>Certifications &amp; formations</h2><span class="rule"></span></div>
+    <p style="color:var(--muted);max-width:720px;margin:-12px 0 26px">Ce que je suis en parallèle du BTS : les <strong style="color:var(--txt);font-weight:600">certifications</strong> d'éditeurs d'un côté, les <strong style="color:var(--txt);font-weight:600">formations en ligne</strong> validées par une attestation de suivi de l'autre.</p>
+    <div class="subh"><span>// certifications</span><i></i></div>
+    <div class="cert-grid" id="certs"></div>
+    <div class="subh"><span>// e-learning · attestations de suivi</span><i></i></div>
+    <div class="cert-grid" id="elearn"></div>
+  </div>
+</section>
+
 <!-- COMPETENCES -->
 <section id="competences">
   <div class="wrap">
-    <div class="sec-head"><span class="idx">05</span><h2>Compétences — Support &amp; mise à disposition de services</h2><span class="rule"></span></div>
+    <div class="sec-head"><span class="idx">06</span><h2>Compétences — Support &amp; mise à disposition de services</h2><span class="rule"></span></div>
     <p style="color:var(--muted);max-width:720px;margin:-12px 0 26px">Les compétences du bloc évalué à l'épreuve <span class="mono" style="color:var(--accent);border:1px solid var(--border-2);padding:1px 6px;border-radius:5px">E5</span>. État de la couverture par mes réalisations, axes à renforcer compris.</p>
     <div class="comp-grid" id="competences-grid"></div>
     <div class="legend">
@@ -366,7 +414,7 @@
 <!-- STACK -->
 <section id="stack">
   <div class="wrap">
-    <div class="sec-head"><span class="idx">06</span><h2>Stack technique</h2><span class="rule"></span></div>
+    <div class="sec-head"><span class="idx">07</span><h2>Stack technique</h2><span class="rule"></span></div>
     <div class="stack" id="stack"></div>
   </div>
 </section>
@@ -599,6 +647,55 @@
       b.items.map(function(i){return '<div class="ci '+i.s+'"><span class="mk">'+mk[i.s]+'</span><span>'+i.t+'</span></div>';}).join('');
     cg.appendChild(el);
   });
+
+  /* ---------- certifications & e-learning ----------
+     cat : "cert" = certification · "elearn" = formation en ligne (attestation)
+     st  : "ok" = obtenue/terminée · "wip" = en cours · "plan" = prévue
+     mods[].on : true = validé · score / date / doc facultatifs
+     all : PDF regroupant toutes les preuves (facultatif)               */
+  var certs=[
+    {cat:"cert",logo:"FTNT",t:"Fortinet NSE",org:"Fortinet Training Institute",st:"plan",
+     d:"Parcours de certification Fortinet, en lien direct avec les FortiGate administrés en alternance. Compte FortiCloud créé, préparation en cours.",
+     mods:[
+       {t:"NSE 1 — Cybersecurity and Cloud Fundamentals",on:false},
+       {t:"NSE 2 — Introduction to Next Generation Firewall",on:false},
+       {t:"NSE 3 — FortiGate Operator",on:false}
+     ]},
+    {cat:"elearn",logo:"CNIL",t:"L'Atelier RGPD",org:"CNIL · MOOC · avril → novembre 2026",st:"ok",
+     d:"MOOC officiel de la CNIL sur la protection des données personnelles : notions clés et principes du RGPD, responsabilités des acteurs, rôle du DPO et outils de la conformité, plus deux modules thématiques (collectivités, données RH).",
+     all:"docs/cnil-atelier-rgpd-attestations.pdf",
+     mods:[
+       {t:"Module 1 — Le RGPD et ses notions clés",on:true,score:"86 %",date:"04/2026",doc:"docs/cnil-atelier-rgpd-module1.pdf"},
+       {t:"Module 2 — Les principes de la protection des données",on:true,score:"85 %",date:"05/2026",doc:"docs/cnil-atelier-rgpd-module2.pdf"},
+       {t:"Module 3 — Les responsabilités des acteurs",on:true,score:"98 %",date:"06/2026",doc:"docs/cnil-atelier-rgpd-module3.pdf"},
+       {t:"Module 4 — Le DPO et les outils de la conformité",on:true,score:"100 %",date:"11/2026",doc:"docs/cnil-atelier-rgpd-module4.pdf"},
+       {t:"Module 5 — Les collectivités territoriales",on:true,score:"98 %",date:"11/2026",doc:"docs/cnil-atelier-rgpd-module5.pdf"},
+       {t:"Module 6 — Travail et données personnelles",on:true,score:"84 %",date:"11/2026",doc:"docs/cnil-atelier-rgpd-module6.pdf"}
+     ]}
+  ];
+  var stl={cert:{ok:"Obtenue",wip:"En cours",plan:"En préparation"},elearn:{ok:"Terminée",wip:"En cours",plan:"Prévue"}};
+  var grids={cert:document.getElementById('certs'),elearn:document.getElementById('elearn')};
+  certs.forEach(function(c){
+    var n=c.mods.length, k=c.mods.filter(function(m){return m.on;}).length, pc=n?Math.round(k*100/n):0;
+    var el=document.createElement('article');el.className='cert';
+    el.innerHTML='<div class="ch"><span class="logo">'+c.logo+'</span><div><h3>'+c.t+'</h3><div class="org">'+c.org+'</div></div><span class="stt '+c.st+'">'+stl[c.cat][c.st]+'</span></div>'+
+      '<p>'+c.d+'</p>'+
+      (n?'<div class="bar"><i style="width:'+pc+'%"></i></div><div class="pct"><span>'+(c.cat==='elearn'?'modules validés':'progression')+'</span><span>'+k+'/'+n+'</span></div>':'')+
+      '<div class="mods">'+c.mods.map(function(m){
+        return '<div class="mod'+(m.on?' on':'')+'"><span class="mk">'+(m.on?'✓':'○')+'</span><span>'+m.t+'</span><span class="rt">'+
+          (m.date?'<span class="dt">'+m.date+'</span>':'')+
+          (m.score?'<span class="sc">'+m.score+'</span>':'')+
+          (m.doc?'<a class="doc" href="'+m.doc+'" target="_blank" rel="noopener">PDF</a>':'')+'</span></div>';
+      }).join('')+'</div>'+
+      (c.all?'<a class="doc all" href="'+c.all+'" target="_blank" rel="noopener">▸ Voir toutes les attestations (PDF)</a>':'');
+    grids[c.cat].appendChild(el);
+  });
+  var slot=document.createElement('div');slot.className='cert slot';
+  slot.innerHTML='<p>// emplacement libre<br>prochaine certification à venir</p>';
+  grids.cert.appendChild(slot);
+  var slot2=document.createElement('div');slot2.className='cert slot';
+  slot2.innerHTML='<p>// emplacement libre<br>prochaine formation en ligne</p>';
+  grids.elearn.appendChild(slot2);
 
   /* ---------- stack ---------- */
   var stack=[
