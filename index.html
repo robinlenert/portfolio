@@ -189,6 +189,22 @@
   .scol ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:7px}
   .scol li{font-size:.82rem;color:var(--muted);background:var(--panel-2);border:1px solid var(--border);padding:4px 10px;border-radius:7px}
 
+  /* ---- logos ---- */
+  .lg{display:block;border-radius:10px;border:1px solid var(--border-2);background:#fff;flex:none;object-fit:cover}
+  .lg.sq{width:48px;height:48px}
+  .lg.wide{height:40px;width:auto;border-radius:7px}
+  .orgs{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+  .orgc{display:flex;align-items:center;gap:12px;background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:10px 16px 10px 10px;transition:.18s}
+  .orgc:hover{border-color:var(--border-2);transform:translateY(-2px)}
+  .orgc .ol{font-family:var(--mono);font-size:.66rem;color:var(--faint);text-transform:uppercase;letter-spacing:.07em}
+  .orgc .on{font-size:.88rem;font-weight:600;line-height:1.3}
+  .tl.wl{display:flex;gap:16px;align-items:flex-start}
+  .tl.wl .tlx{flex:1}
+  .tl .lgs{display:flex;gap:8px;flex:none}
+  .ent-head{display:flex;align-items:center;justify-content:center;padding:6px 0 18px;margin-bottom:6px;border-bottom:1px dashed var(--border)}
+  .ent-head .lg.wide{height:54px}
+  .proj .badge .bi{height:12px;width:auto;border-radius:2px;vertical-align:-1px;margin-right:5px}
+
   /* ---- certifications ---- */
   .cert-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
   .subh{display:flex;align-items:center;gap:12px;margin:0 0 16px;font-family:var(--mono);font-size:.78rem;color:var(--accent);text-transform:uppercase;letter-spacing:.07em;font-weight:700}
@@ -199,6 +215,7 @@
   .cert .all:hover{border-color:var(--accent-2);transform:translateX(2px)}
   .cert{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:13px}
   .cert .ch{display:flex;align-items:flex-start;gap:13px}
+  .cert .logo.im{width:auto;max-width:120px;height:44px;padding:0;background:#fff;object-fit:contain}
   .cert .logo{width:42px;height:42px;border-radius:9px;display:grid;place-items:center;flex:none;font-family:var(--mono);font-weight:700;font-size:.78rem;border:1px solid var(--border-2);background:var(--panel-2);color:var(--accent)}
   .cert h3{font-size:1.02rem;font-weight:600}
   .cert .org{font-family:var(--mono);font-size:.74rem;color:var(--faint);margin-top:3px}
@@ -244,6 +261,9 @@
 
   @media (max-width:760px){
     .cert .mod .dt{display:none}
+    .tl.wl{flex-direction:column;gap:10px}
+    .orgc{flex:1 1 100%}
+    .cert .logo.im{max-width:92px;height:38px}
     .profile{grid-template-columns:1fr}
     .grid,.comp-grid,.cert-grid{grid-template-columns:1fr}
     .stack{grid-template-columns:1fr}
@@ -302,6 +322,11 @@
       <span class="chip"><span class="d"></span>Session 2025 · SISR</span>
       <span class="chip warn"><span class="d"></span>18 réalisations</span>
     </div>
+    <div class="orgs">
+      <a class="orgc" href="#parcours"><img class="lg sq" src="img/logo-ndlr.jpg" alt="Logo Institution Notre-Dame La Riche"><span><span class="ol">école</span><br><span class="on">Notre-Dame-La-Riche</span></span></a>
+      <a class="orgc" href="#parcours"><img class="lg sq" src="img/logo-iscb.jpg" alt="Logo ISCB centre de formation"><span><span class="ol">CFA</span><br><span class="on">ISCB Tours</span></span></a>
+      <a class="orgc" href="#entreprise"><img class="lg wide" src="img/logo-nr.png" alt="Logo La Nouvelle République"><span><span class="ol">alternance</span><br><span class="on">La Nouvelle République</span></span></a>
+    </div>
   </div>
 </div>
 
@@ -335,10 +360,13 @@
     <div class="sec-head"><span class="idx">02</span><h2>Parcours</h2><span class="rule"></span></div>
     <div class="card">
       <div class="timeline">
-        <div class="tl">
-          <div class="yr mono">2025 → 2026</div>
-          <h3>BTS SIO — option SISR <span style="color:var(--accent);font-weight:400">· en cours</span></h3>
-          <p>Infrastructure, systèmes &amp; réseaux. Alternance via le CFA ISCB — Notre-Dame-La-Riche, Tours.</p>
+        <div class="tl wl">
+          <div class="tlx">
+            <div class="yr mono">2025 → 2026</div>
+            <h3>BTS SIO — option SISR <span style="color:var(--accent);font-weight:400">· en cours</span></h3>
+            <p>Infrastructure, systèmes &amp; réseaux. Alternance via le CFA ISCB — Notre-Dame-La-Riche, Tours.</p>
+          </div>
+          <div class="lgs"><img class="lg sq" src="img/logo-ndlr.jpg" alt="Notre-Dame La Riche" title="Notre-Dame-La-Riche"><img class="lg sq" src="img/logo-iscb.jpg" alt="ISCB" title="CFA ISCB"></div>
         </div>
         <div class="tl">
           <div class="yr mono">2024 → 2025</div>
@@ -365,6 +393,7 @@
         <p>J'y interviens sur l'<strong>exploitation et la maintenance du parc et du réseau</strong>, ainsi que sur le <strong>support informatique auprès des utilisateurs</strong> : prise en charge et résolution des demandes, déploiement de logiciels sur les postes (solution UEM), administration et <strong>sécurisation des équipements réseau</strong> (Fortinet, Cisco), configuration de VLAN et supervision.</p>
       </div>
       <div class="card">
+        <div class="ent-head"><img class="lg wide" src="img/logo-nr.png" alt="Logo La Nouvelle République"></div>
         <div class="specs">
           <div class="row"><span class="k">entreprise</span><span class="v">La Nouvelle République</span></div>
           <div class="row"><span class="k">service</span><span class="v">Informatique</span></div>
@@ -577,7 +606,7 @@
   ];
 
   var doms=["Tous","Réseau","Système","Projet","Virtualisation","Conteneurs","Automatisation","Sécurité","Support"];
-  var badges={cr:{t:"CR joint",cls:"cr"},ent:{t:"En entreprise",cls:""}};
+  var badges={cr:{t:"CR joint",cls:"cr"},ent:{t:"En entreprise",cls:"",ic:"img/logo-nr.png"}};
 
   var pc=document.getElementById('projects');
   function render(filter){
@@ -586,7 +615,7 @@
       if(filter!=="Tous" && p.dom!==filter) return;
       var el=document.createElement('article');
       el.className='proj';
-      var bd = p.badge && badges[p.badge] ? '<span class="badge '+badges[p.badge].cls+'">'+badges[p.badge].t+'</span>' : '';
+      var bd = p.badge && badges[p.badge] ? '<span class="badge '+badges[p.badge].cls+'">'+(badges[p.badge].ic?'<img class="bi" src="'+badges[p.badge].ic+'" alt="">':'')+badges[p.badge].t+'</span>' : '';
       el.innerHTML=
         '<div class="top"><span class="st" title="Réalisation validée"></span><h3>'+p.t+'</h3></div>'+
         '<div style="display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin-top:-4px"><span class="dom">'+p.dom+'</span>'+bd+'</div>'+
@@ -654,14 +683,14 @@
      mods[].on : true = validé · score / date / doc facultatifs
      all : PDF regroupant toutes les preuves (facultatif)               */
   var certs=[
-    {cat:"cert",logo:"FTNT",t:"Fortinet NSE",org:"Fortinet Training Institute",st:"plan",
+    {cat:"cert",logo:"FTNT",img:"img/logo-fortinet.png",t:"Fortinet NSE",org:"Fortinet Training Institute",st:"plan",
      d:"Parcours de certification Fortinet, en lien direct avec les FortiGate administrés en alternance. Compte FortiCloud créé, préparation en cours.",
      mods:[
        {t:"NSE 1 — Cybersecurity and Cloud Fundamentals",on:false},
        {t:"NSE 2 — Introduction to Next Generation Firewall",on:false},
        {t:"NSE 3 — FortiGate Operator",on:false}
      ]},
-    {cat:"elearn",logo:"CNIL",t:"L'Atelier RGPD",org:"CNIL · MOOC · avril → novembre 2026",st:"ok",
+    {cat:"elearn",logo:"CNIL",img:"img/logo-cnil.png",t:"L'Atelier RGPD",org:"CNIL · MOOC · avril → novembre 2026",st:"ok",
      d:"MOOC officiel de la CNIL sur la protection des données personnelles : notions clés et principes du RGPD, responsabilités des acteurs, rôle du DPO et outils de la conformité, plus deux modules thématiques (collectivités, données RH).",
      all:"docs/cnil-atelier-rgpd-attestations.pdf",
      mods:[
@@ -678,7 +707,7 @@
   certs.forEach(function(c){
     var n=c.mods.length, k=c.mods.filter(function(m){return m.on;}).length, pc=n?Math.round(k*100/n):0;
     var el=document.createElement('article');el.className='cert';
-    el.innerHTML='<div class="ch"><span class="logo">'+c.logo+'</span><div><h3>'+c.t+'</h3><div class="org">'+c.org+'</div></div><span class="stt '+c.st+'">'+stl[c.cat][c.st]+'</span></div>'+
+    el.innerHTML='<div class="ch">'+(c.img?'<img class="logo im" src="'+c.img+'" alt="Logo '+c.logo+'">':'<span class="logo">'+c.logo+'</span>')+'<div><h3>'+c.t+'</h3><div class="org">'+c.org+'</div></div><span class="stt '+c.st+'">'+stl[c.cat][c.st]+'</span></div>'+
       '<p>'+c.d+'</p>'+
       (n?'<div class="bar"><i style="width:'+pc+'%"></i></div><div class="pct"><span>'+(c.cat==='elearn'?'modules validés':'progression')+'</span><span>'+k+'/'+n+'</span></div>':'')+
       '<div class="mods">'+c.mods.map(function(m){
