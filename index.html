@@ -28,6 +28,7 @@
     --maxw:1120px;
   }
   *{box-sizing:border-box}
+  [hidden]{display:none!important}
   html{scroll-behavior:smooth}
   body{
     margin:0;background:var(--bg);color:var(--txt);font-family:var(--sans);
@@ -51,15 +52,15 @@
     position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
     background:rgba(9,13,19,.72);border-bottom:1px solid var(--border);
   }
-  .nav-in{display:flex;align-items:center;gap:18px;height:58px}
+  .nav-in{display:flex;align-items:center;gap:14px;height:58px}
   .brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:700;font-size:.95rem;white-space:nowrap}
   .led{width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 rgba(74,222,128,.6);animation:pulse 2.4s infinite}
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(74,222,128,.55)}70%{box-shadow:0 0 0 7px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
   .brand .dim{color:var(--faint)}
   nav.links{margin-left:auto;display:flex;gap:2px;flex-wrap:nowrap}
-  @media (max-width:1180px){.clock{display:none}}
-  @media (max-width:1060px){nav.links{display:none}.brand{margin-right:auto}}
-  nav.links a{font-family:var(--mono);font-size:.8rem;color:var(--muted);padding:7px 9px;white-space:nowrap;border-radius:7px;transition:.18s}
+  @media (max-width:1320px){.clock{display:none}}
+  @media (max-width:1140px){nav.links{display:none}.brand{margin-right:auto}}
+  nav.links a{font-family:var(--mono);font-size:.8rem;color:var(--muted);padding:7px 6px;white-space:nowrap;border-radius:7px;transition:.18s}
   nav.links a:hover{color:var(--txt);background:var(--panel)}
   nav.links a.active{color:var(--accent);background:rgba(45,212,191,.08)}
   .clock{font-family:var(--mono);font-size:.78rem;color:var(--faint);white-space:nowrap}
@@ -112,7 +113,7 @@
   .chip.warn .d{background:var(--warn)}
 
   /* ---- sections ---- */
-  section{padding:58px 0;position:relative}
+  section{padding:58px 0;position:relative;scroll-margin-top:58px}
   .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:30px;flex-wrap:wrap}
   .sec-head .idx{font-family:var(--mono);color:var(--accent);font-size:.85rem;font-weight:700}
   .sec-head h2{font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:700}
@@ -165,6 +166,23 @@
   .proj .badge{font-family:var(--mono);font-size:.66rem;color:var(--warn);border:1px solid rgba(251,191,36,.4);background:rgba(251,191,36,.07);padding:2px 7px;border-radius:5px}
   .proj .badge.cr{color:var(--accent-2);border-color:rgba(56,189,248,.4);background:rgba(56,189,248,.07)}
 
+  /* ---- fonctionnement ---- */
+  .how-intro{color:var(--muted);max-width:720px;margin:-12px 0 22px}
+  .how{display:none}
+  .how.open{display:block}
+  .how h3{font-size:1.1rem;font-weight:600}
+  .how .sum{color:var(--muted);margin:6px 0 20px;font-size:.92rem}
+  .steps{list-style:none;margin:0;padding:0;counter-reset:st}
+  .steps li{counter-increment:st;position:relative;padding:0 0 16px 44px;font-size:.9rem;color:var(--muted)}
+  .steps li::before{content:counter(st);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:8px;border:1px solid var(--border-2);background:var(--panel-2);color:var(--accent);font-family:var(--mono);font-size:.78rem;font-weight:700;display:grid;place-items:center}
+  .steps li:not(:last-child)::after{content:"";position:absolute;left:14px;top:30px;bottom:2px;width:1px;background:var(--border-2)}
+  .steps b{display:block;color:var(--txt);font-weight:600}
+  .how .key{border-left:3px solid var(--accent);background:var(--panel-2);padding:12px 15px;border-radius:0 9px 9px 0;font-size:.88rem;color:var(--muted);margin-top:4px}
+  .how .key strong{color:var(--txt)}
+  button.howlink{align-self:flex-start;cursor:pointer;background:transparent;font-family:var(--mono);font-size:.74rem;color:var(--accent);border:1px solid var(--border-2);padding:6px 11px;border-radius:7px}
+  button.howlink:hover{border-color:var(--accent)}
+  .proj .acts{display:flex;flex-wrap:wrap;gap:8px}
+
   /* ---- competences ---- */
   .comp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
   .block{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px}
@@ -178,6 +196,10 @@
   .ci.part .mk{color:var(--warn)}
   .ci.off .mk{color:var(--faint)}
   .ci.on{color:var(--txt)}
+  .block .pp{font-size:.82rem;color:var(--txt);font-weight:600;background:var(--panel-2);border:1px solid var(--border);border-radius:8px;padding:8px 11px;margin:-4px 0 10px}
+  .block .pp span{display:block;font-family:var(--mono);font-size:.66rem;font-weight:400;color:var(--accent);text-transform:uppercase;letter-spacing:.07em}
+  .e5link{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.8rem;color:var(--accent-2);border:1px solid var(--border-2);background:var(--panel);padding:9px 14px;border-radius:8px;margin:0 0 22px;transition:.16s}
+  .e5link:hover{border-color:var(--accent-2);transform:translateX(2px)}
   .legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px;font-family:var(--mono);font-size:.76rem;color:var(--muted)}
   .legend b{font-weight:400}
   .legend .m{color:var(--ok)}.legend .mw{color:var(--warn)}.legend .mo{color:var(--faint)}
@@ -287,6 +309,7 @@
       <a href="#parcours">parcours</a>
       <a href="#entreprise">alternance</a>
       <a href="#realisations">réalisations</a>
+      <a href="#fonctionnement">détails</a>
       <a href="#certifications">formations</a>
       <a href="#competences">compétences</a>
       <a href="#stack">stack</a>
@@ -319,8 +342,8 @@
     <div class="tags">
       <span class="chip ok"><span class="d"></span>En alternance</span>
       <span class="chip"><span class="d"></span>Tours (37)</span>
-      <span class="chip"><span class="d"></span>Session 2025 · SISR</span>
-      <span class="chip warn"><span class="d"></span>18 réalisations</span>
+      <span class="chip"><span class="d"></span>Session 2025-2027 · SISR</span>
+      <span class="chip warn" id="nbreal"><span class="d"></span>réalisations</span>
     </div>
     <div class="orgs">
       <a class="orgc" href="#parcours"><img class="lg sq" src="img/logo-iscb.jpg" alt="Logo ISCB centre de formation"><span><span class="ol">centre de formation</span><br><span class="on">ISCB Tours</span></span></a>
@@ -345,7 +368,7 @@
           <div class="row"><span class="k">établissement</span><span class="v">ISCB Tours</span></div>
           <div class="row"><span class="k">lieu</span><span class="v">Tours (37)</span></div>
           <div class="row"><span class="k">alternance</span><span class="v">La Nouvelle République</span></div>
-          <div class="row"><span class="k">session</span><span class="v">2025</span></div>
+          <div class="row"><span class="k">session</span><span class="v">2025-2027</span></div>
           <div class="row"><span class="k">statut</span><span class="v" style="color:var(--ok)">● actif</span></div>
         </div>
       </div>
@@ -361,7 +384,7 @@
       <div class="timeline">
         <div class="tl wl">
           <div class="tlx">
-            <div class="yr mono">2025 → 2026</div>
+            <div class="yr mono">2025 → 2027</div>
             <h3>BTS SIO — option SISR <span style="color:var(--accent);font-weight:400">· en cours</span></h3>
             <p>Infrastructure, systèmes &amp; réseaux. En alternance à l'ISCB, Tours.</p>
           </div>
@@ -419,10 +442,63 @@
   </div>
 </section>
 
+<!-- FONCTIONNEMENT -->
+<section id="fonctionnement">
+  <div class="wrap">
+    <div class="sec-head"><span class="idx">05</span><h2>Comment ça marche</h2><span class="rule"></span></div>
+    <p class="how-intro">Ce qui se passe derrière les manipulations de trois de mes procédures.</p>
+    <div class="filters" id="howtabs">
+      <button type="button" class="filt active" data-how="master">Masterisation</button>
+      <button type="button" class="filt" data-how="deploy">Déploiement logiciel</button>
+      <button type="button" class="filt" data-how="ha">Haute disponibilité</button>
+    </div>
+
+    <div class="card how open" id="how-master">
+      <h3>Masterisation d'un poste par le réseau</h3>
+      <p class="sum">Un <strong>master</strong> est une image de référence de Windows, déjà préparée, que l'on recopie sur les nouveaux PC.</p>
+      <ol class="steps">
+        <li><b>Boot PXE (Échap puis F12)</b>Le PC démarre sur sa carte réseau filaire au lieu de son disque.</li>
+        <li><b>DHCP</b>Il reçoit une adresse IP et les informations de démarrage : quel serveur contacter, quel fichier charger.</li>
+        <li><b>TFTP → WinPE</b>Il télécharge un mini-Windows temporaire, WinPE, qui s'exécute en mémoire. Le disque peut donc être réécrit.</li>
+        <li><b>Saisie du code</b>OS Deployer contacte le serveur. Le code, relevé dans Endpoint Central, désigne la tâche de déploiement, donc le master à appliquer.</li>
+        <li><b>Copie de l'image</b>Windows 11 et le contenu du master sont écrits sur le disque. Le modèle de déploiement définit les réglages appliqués ensuite.</li>
+        <li><b>Redémarrage et contrôles</b>Le PC démarre sur son disque. Je vérifie réseau, agent Endpoint Central, Fortinet, SentinelOne et mises à jour.</li>
+      </ol>
+      <div class="key"><strong>À retenir :</strong> le code ne contient pas Windows, il indique au serveur quoi envoyer au poste.</div>
+    </div>
+
+    <div class="card how" id="how-deploy">
+      <h3>Déploiement d'un logiciel avec Endpoint Central</h3>
+      <p class="sum">Chaque poste du parc a un <strong>agent</strong> qui communique avec la console.</p>
+      <ol class="steps">
+        <li><b>Choisir la configuration</b>Elle décrit le logiciel à installer.</li>
+        <li><b>Définir la cible</b>J'indique le nom du poste concerné, puis j'enregistre.</li>
+        <li><b>Attente de l'agent</b>L'agent vient chercher ses configurations à intervalles réguliers (90 minutes par défaut) ou au démarrage.</li>
+        <li><b>Forcer avec cfgupdate.exe</b>La commande demande à l'agent de récupérer ses configurations tout de suite.</li>
+        <li><b>Installation et suivi</b>L'agent installe le logiciel et le statut remonte dans la console.</li>
+      </ol>
+      <div class="key"><strong>À retenir :</strong> la console ne fait que préparer l'ordre, c'est l'agent du poste qui l'exécute.</div>
+    </div>
+
+    <div class="card how" id="how-ha">
+      <h3>Haute disponibilité web avec Keepalived</h3>
+      <p class="sum">Deux serveurs Apache partagent une <strong>IP virtuelle</strong> (192.168.173.200), la seule adresse utilisée par le client.</p>
+      <ol class="steps">
+        <li><b>Élection</b>Avec VRRP, le serveur à la priorité la plus haute (SRV1 : 100, SRV2 : 90) porte l'IP virtuelle.</li>
+        <li><b>Annonces</b>Le MASTER signale sa présence chaque seconde (advert_int 1).</li>
+        <li><b>Panne</b>Après environ 3 secondes sans annonce, le BACKUP prend l'IP virtuelle.</li>
+        <li><b>Mise à jour du réseau</b>Il envoie un ARP gratuit : les machines associent l'IP à sa carte réseau.</li>
+        <li><b>Retour</b>Quand SRV1 revient, sa priorité plus haute lui fait reprendre l'IP.</li>
+      </ol>
+      <div class="key"><strong>Limite :</strong> cette configuration détecte la perte du serveur ou de Keepalived, pas un arrêt d'Apache seul. Il faudrait ajouter un script de vérification (vrrp_script).</div>
+    </div>
+  </div>
+</section>
+
 <!-- CERTIFICATIONS -->
 <section id="certifications">
   <div class="wrap">
-    <div class="sec-head"><span class="idx">05</span><h2>Certifications &amp; formations</h2><span class="rule"></span></div>
+    <div class="sec-head"><span class="idx">06</span><h2>Certifications &amp; formations</h2><span class="rule"></span></div>
     <p style="color:var(--muted);max-width:720px;margin:-12px 0 26px">Ce que je suis en parallèle du BTS : les <strong style="color:var(--txt);font-weight:600">certifications</strong> d'éditeurs d'un côté, les <strong style="color:var(--txt);font-weight:600">formations en ligne</strong> validées par une attestation de suivi de l'autre.</p>
     <div class="subh"><span>// certifications</span><i></i></div>
     <div class="cert-grid" id="certs"></div>
@@ -434,8 +510,9 @@
 <!-- COMPETENCES -->
 <section id="competences">
   <div class="wrap">
-    <div class="sec-head"><span class="idx">06</span><h2>Compétences — Support &amp; mise à disposition de services</h2><span class="rule"></span></div>
-    <p style="color:var(--muted);max-width:720px;margin:-12px 0 26px">Les compétences du bloc évalué à l'épreuve <span class="mono" style="color:var(--accent);border:1px solid var(--border-2);padding:1px 6px;border-radius:5px">E5</span>. État de la couverture par mes réalisations, axes à renforcer compris.</p>
+    <div class="sec-head"><span class="idx">07</span><h2>Compétences — Support &amp; mise à disposition de services</h2><span class="rule"></span></div>
+    <p style="color:var(--muted);max-width:720px;margin:-12px 0 26px">Les six blocs de compétences évalués à l'épreuve <span class="mono" style="color:var(--accent);border:1px solid var(--border-2);padding:1px 6px;border-radius:5px">E5</span>, avec le projet que je présente pour chacun et l'état de leur couverture, axes à renforcer compris.</p>
+    <a class="doc e5link" href="docs/tableau-synthese-e5.pdf" target="_blank" rel="noopener">▸ Voir mon tableau de synthèse E5 (PDF)</a>
     <div class="comp-grid" id="competences-grid"></div>
     <div class="legend">
       <span><b class="m">▣</b> couverte</span>
@@ -448,8 +525,8 @@
 <!-- STACK -->
 <section id="stack">
   <div class="wrap">
-    <div class="sec-head"><span class="idx">07</span><h2>Stack technique</h2><span class="rule"></span></div>
-    <div class="stack" id="stack"></div>
+    <div class="sec-head"><span class="idx">08</span><h2>Stack technique</h2><span class="rule"></span></div>
+    <div class="stack" id="stack-grid"></div>
   </div>
 </section>
 
@@ -458,20 +535,19 @@
   <div class="wrap">
     <div class="contact">
       <h2>Prendre contact</h2>
-      <p>Pour toute question ou opportunité, vous pouvez me joindre par mail.</p>
+      <p>Pour toute question ou opportunité, vous pouvez me joindre par mail ou via mes profils.</p>
       <div class="clinks">
         <a class="btn primary" href="mailto:robinlenert05@gmail.com">✉ robinlenert05@gmail.com</a>
-        <a class="btn" href="#" id="linkedin">in · LinkedIn</a>
-        <a class="btn" href="#" id="github">⌥ GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/robin-lenert-472150364/" id="linkedin" target="_blank" rel="noopener">in · LinkedIn</a>
+        <a class="btn" href="https://github.com/robinlenert" id="github" target="_blank" rel="noopener">⌥ GitHub</a>
       </div>
-      <div class="note">// LinkedIn &amp; GitHub à compléter si tu veux les ajouter</div>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap foot">
-    <span>// portfolio — Robin Lenert · BTS SIO SISR · session 2025</span>
+    <span>// portfolio — Robin Lenert · BTS SIO SISR · session 2025-2027</span>
     <span id="uptime">uptime: --</span>
   </div>
 </footer>
@@ -488,10 +564,11 @@
     {t:"$ cat /etc/role",c:"pr"},
     {t:"BTS SIO · SISR — systèmes & réseaux",c:"line"},
     {t:"$ systemctl status portfolio",c:"pr"},
-    {t:"● actif — 16 services opérationnels",c:"ok"}
+    {t:"● actif",c:"ok"}
   ];
   var boot = document.getElementById('boot');
   function esc(s){return s.replace(/[&<>]/g,function(m){return({'&':'&amp;','<':'&lt;','>':'&gt;'})[m];});}
+  function startBoot(){
   if(rm){
     boot.innerHTML = bootLines.map(function(l){return '<div class="line '+l.c+'">'+esc(l.t)+'</div>';}).join('')+'<span class="cursor"></span>';
   } else {
@@ -507,6 +584,7 @@
       else setTimeout(step, cur.c==='pr'?26:14);
     }
     step();
+  }
   }
 
   /* ---------- clock + uptime ---------- */
@@ -539,7 +617,7 @@
     {t:"Déploiement logiciel — ManageEngine Endpoint Central",dom:"Système",badge:"ent",
      d:"En entreprise : déploiement centralisé d'un logiciel sur un poste du parc via la solution UEM ManageEngine Endpoint Central, avec forçage de l'installation en ligne de commande (cfgupdate).",
      tech:["ManageEngine Endpoint Central","UEM","Déploiement de parc","Windows"],
-     comp:["Déployer un service","Mettre à disposition un service"],doc:"docs/deploiement-endpoint-central.pdf"},
+     comp:["Déployer un service","Mettre à disposition un service"],doc:"docs/deploiement-endpoint-central.pdf",how:"deploy"},
     {t:"Mise à jour IOS & durcissement — switch Cisco 3750",dom:"Réseau",badge:"ent",
      d:"En entreprise : mise à jour de l'IOS d'un switch Cisco Catalyst 3750 par TFTP, puis durcissement complet (VTP, NTP, désactivation de services, AAA, SNMPv3, SSH, bannière). Procédure fournie anonymisée.",
      tech:["Cisco Catalyst 3750","IOS / TFTP","SNMPv3","AAA","Hardening"],
@@ -547,7 +625,7 @@
     {t:"Masterisation de postes — ManageEngine OS Deployer (PXE)",dom:"Système",badge:"ent",
      d:"En entreprise : préparation et masterisation de nouveaux postes selon le profil métier (journalistes, DSI, réseau presse…) — identification du master dans Endpoint Central, déploiement par boot réseau PXE / OS Deployer (WinPE), puis contrôles de conformité (agents de sécurité, mises à jour) avant mise en service.",
      tech:["ManageEngine OS Deployer","PXE / WinPE","Masterisation","SentinelOne / Fortinet","Windows 11"],
-     comp:["Déployer un service","Mettre à disposition un service"],doc:"docs/masterisation-pc.pdf"},
+     comp:["Recenser les ressources numériques","Collecter & orienter des demandes","Déployer un service","Tests d'intégration & acceptation"],doc:"docs/masterisation-pc.pdf",how:"master"},
     {t:"Portail de mot de passe en libre-service — ADSelfService Plus",dom:"Sécurité",badge:"ent",
      d:"En entreprise : installation et configuration du portail ADSelfService Plus (ManageEngine) pour la réinitialisation de mot de passe et le déverrouillage de compte en libre-service — intégration Active Directory, sécurisation HTTPS par certificat SSL, MFA et déploiement de l'agent, avec tests d'inscription et de réinitialisation côté utilisateur.",
      tech:["ADSelfService Plus","Active Directory","Certificat SSL / HTTPS","MFA","Self-service password"],
@@ -563,7 +641,7 @@
     {t:"Haute disponibilité Web — Keepalived",dom:"Système",badge:"cr",
      d:"Deux serveurs web Debian avec une IP virtuelle (VRRP) et bascule automatique MASTER/BACKUP en cas de panne, avec notifications mail du failover.",
      tech:["Apache2","Keepalived","VRRP","VIP","Debian 12"],
-     comp:["Continuité de service","Tests d'intégration & acceptation"],doc:"docs/ha-keepalived-robin.pdf"},
+     comp:["Continuité de service","Tests d'intégration & acceptation"],doc:"docs/ha-keepalived-robin.pdf",how:"ha"},
     {t:"Haute disponibilité passerelle — HSRP",dom:"Réseau",badge:"",
      d:"Passerelle redondante pour deux VLAN via HSRP : routeur virtuel actif/passif (preempt), routage inter-VLAN par sous-interfaces 802.1Q, vérification du basculement.",
      tech:["Cisco IOS","VLAN","802.1Q","HSRP","Switch"],
@@ -576,6 +654,10 @@
      d:"Déploiement automatisé de WordPress sur deux serveurs Debian depuis un serveur de gestion agentless : inventaire, connexion SSH par clé, playbook YAML idempotent, gestion des variables.",
      tech:["Ansible","Playbook YAML","SSH","Idempotence"],
      comp:["Exploiter référentiels & standards","Déployer un service"]},
+    {t:"Infrastructure de virtualisation — Proxmox VE",dom:"Virtualisation",badge:"",
+     d:"Projet de groupe en cours : installation d'un serveur de virtualisation Proxmox VE, puis création des machines virtuelles (Windows Server, clients Windows, serveurs Debian / Linux) et d'un pare-feu pfSense pour les règles de filtrage, le tout servant de socle aux TP suivants, dont le TP Active Directory.",
+     tech:["Proxmox VE","KVM / QEMU","pfSense","Windows Server","Debian","Machines virtuelles"],
+     comp:["Déployer un service","Habilitations & sécurité du service"]},
     {t:"Automatisation de VM de test — Vagrant",dom:"Virtualisation",badge:"",
      d:"Création, provisionnement et destruction automatisés de labos multi-VM depuis un Vagrantfile (box, provider, provisioning shell / Docker / Ansible) sous VMware Workstation.",
      tech:["Vagrant","VMware Workstation","IaC","Provisioning"],
@@ -589,7 +671,7 @@
      tech:["pfSense","Pare-feu","Règles de filtrage"],
      comp:["Habilitations & sécurité du service"]},
     {t:"Administration Active Directory",dom:"Système",badge:"",
-     d:"Administration d'un annuaire Active Directory : contrôleurs de domaine redondants (DC1/DC2), gestion du DHCP et mise en place de la tolérance de panne.",
+     d:"Administration d'un annuaire Active Directory : contrôleurs de domaine redondants (DC1/DC2), gestion du DHCP et mise en place de la tolérance de panne. Réalisé sur les VM du serveur Proxmox.",
      tech:["Windows Server","AD DS","DC1 / DC2","DHCP"],
      comp:["Continuité de service","Habilitations & sécurité du service"]},
     {t:"Changement de VLAN sur switch",dom:"Réseau",badge:"ent",
@@ -610,6 +692,10 @@
      comp:["Traiter des demandes concernant les applications"]}
   ];
 
+  bootLines[5].t="● actif — "+projects.length+" réalisations en ligne";
+  document.getElementById('nbreal').innerHTML='<span class="d"></span>'+projects.length+' réalisations';
+  startBoot();
+
   var doms=["Tous","Réseau","Système","Projet","Virtualisation","Conteneurs","Automatisation","Sécurité","Support"];
   var badges={cr:{t:"CR joint",cls:"cr"},ent:{t:"En entreprise",cls:"",ic:"img/logo-nr.png"}};
 
@@ -627,7 +713,8 @@
         '<p>'+p.d+'</p>'+
         '<div class="tech">'+p.tech.map(function(x){return '<span>'+x+'</span>';}).join('')+'</div>'+
         '<div class="comp">'+p.comp.map(function(x){return '<span>'+x+'</span>';}).join('')+'</div>'+
-        (p.doc ? '<a class="doc" href="'+p.doc+'" target="_blank" rel="noopener">▸ Voir la procédure (PDF)</a>' : '');
+        '<div class="acts">'+(p.how ? '<button type="button" class="howlink" data-how="'+p.how+'">▸ Comment ça marche</button>' : '')+
+        (p.doc ? '<a class="doc" href="'+p.doc+'" target="_blank" rel="noopener">▸ Voir la procédure (PDF)</a>' : '')+'</div>';
       pc.appendChild(el);
     });
   }
@@ -636,40 +723,61 @@
     var b=document.createElement('button');
     b.className='filt'+(i===0?' active':'');b.textContent=d;
     b.addEventListener('click',function(){
-      document.querySelectorAll('.filt').forEach(function(x){x.classList.remove('active');});
+      document.querySelectorAll('#filters .filt').forEach(function(x){x.classList.remove('active');});
       b.classList.add('active');render(d);
     });
     fc.appendChild(b);
   });
   render("Tous");
 
+  /* ---------- fonctionnement ---------- */
+  function showHow(id){
+    document.querySelectorAll('#howtabs .filt').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-how')===id);});
+    document.querySelectorAll('.how').forEach(function(c){c.classList.toggle('open',c.id==='how-'+id);});
+  }
+  document.querySelectorAll('#howtabs .filt').forEach(function(b){b.addEventListener('click',function(){showHow(b.getAttribute('data-how'));});});
+  pc.addEventListener('click',function(e){
+    var b=e.target.closest('button.howlink');
+    if(!b) return;
+    showHow(b.getAttribute('data-how'));
+    document.getElementById('fonctionnement').scrollIntoView();
+  });
+
   /* ---------- competences E5 ---------- */
   var blocks=[
-    {l:"A",h:"Gérer le patrimoine informatique",warn:false,items:[
-      {s:"on",t:"Exploiter des référentiels, normes et standards"},
-      {s:"on",t:"Vérifier les conditions de la continuité d'un service"},
+    {l:"A",h:"Gérer le patrimoine informatique",warn:false,p:"Masterisation de postes",items:[
+      {s:"on",t:"Recenser et identifier les ressources numériques"},
+      {s:"on",t:"Exploiter des référentiels, normes et standards adoptés par le prestataire informatique"},
+      {s:"on",t:"Mettre en place et vérifier les niveaux d'habilitation associés à un service"},
+      {s:"on",t:"Vérifier les conditions de la continuité d'un service informatique"},
       {s:"on",t:"Gérer des sauvegardes"},
-      {s:"part",t:"Mettre en place et vérifier les niveaux d'habilitation"},
-      {s:"off",t:"Recenser et identifier les ressources numériques"}
+      {s:"on",t:"Vérifier le respect des règles d'utilisation des ressources numériques"}
     ]},
-    {l:"B",h:"Répondre aux incidents & demandes",warn:false,items:[
-      {s:"on",t:"Traiter des demandes réseau & système"},
-      {s:"on",t:"Traiter des demandes concernant les applications"},
-      {s:"on",t:"Collecter, suivre et orienter des demandes"}
+    {l:"B",h:"Répondre aux incidents et aux demandes d'assistance et d'évolution",warn:false,p:"Masterisation de postes",items:[
+      {s:"on",t:"Collecter, suivre et orienter des demandes"},
+      {s:"on",t:"Traiter des demandes concernant les services réseau et système, applicatifs"},
+      {s:"on",t:"Traiter des demandes concernant les applications"}
     ]},
-    {l:"E",h:"Mettre à disposition un service",warn:false,items:[
-      {s:"on",t:"Déployer un service"},
-      {s:"on",t:"Réaliser les tests d'intégration et d'acceptation"},
-      {s:"part",t:"Accompagner les utilisateurs dans la mise en place"}
+    {l:"C",h:"Développer la présence en ligne de l'organisation",warn:true,p:"Portfolio en ligne",items:[
+      {s:"on",t:"Participer à la valorisation de l'image de l'organisation sur les médias numériques en tenant compte du cadre juridique et des enjeux économiques"},
+      {s:"off",t:"Référencer les services en ligne de l'organisation et mesurer leur visibilité"},
+      {s:"on",t:"Participer à l'évolution d'un site Web exploitant les données de l'organisation"}
     ]},
-    {l:"C",h:"Développer la présence en ligne",warn:true,items:[
-      {s:"part",t:"Participer à l'évolution d'un site Web (WordPress)"},
-      {s:"off",t:"Référencer les services en ligne & mesurer la visibilité"}
-    ]},
-    {l:"D",h:"Travailler en mode projet",warn:false,items:[
-      {s:"on",t:"Analyser les objectifs & modalités d'un projet"},
+    {l:"D",h:"Travailler en mode projet",warn:false,p:"Atelier du Parc",items:[
+      {s:"on",t:"Analyser les objectifs et les modalités d'organisation d'un projet"},
       {s:"on",t:"Planifier les activités"},
-      {s:"part",t:"Évaluer les indicateurs & analyser les écarts"}
+      {s:"off",t:"Évaluer les indicateurs de suivi d'un projet et analyser les écarts"}
+    ]},
+    {l:"E",h:"Mettre à disposition des utilisateurs un service informatique",warn:false,p:"Masterisation de postes",items:[
+      {s:"on",t:"Réaliser les tests d'intégration et d'acceptation d'un service"},
+      {s:"on",t:"Déployer un service"},
+      {s:"on",t:"Accompagner les utilisateurs dans la mise en place d'un service"}
+    ]},
+    {l:"F",h:"Organiser son développement professionnel",warn:false,p:"Veille, formations et certifications, portfolio",items:[
+      {s:"on",t:"Mettre en place son environnement d'apprentissage personnel"},
+      {s:"on",t:"Mettre en œuvre des outils et stratégies de veille informationnelle"},
+      {s:"on",t:"Gérer son identité professionnelle"},
+      {s:"on",t:"Développer son projet professionnel"}
     ]}
   ];
   var mk={on:"▣",part:"▣",off:"▢"};
@@ -678,6 +786,7 @@
     var el=document.createElement('div');
     el.className='block'+(b.warn?' warn':'');
     el.innerHTML='<div class="bh"><span class="bl">'+b.l+'</span><h3>'+b.h+'</h3></div>'+
+      '<div class="pp"><span>projet présenté</span>'+b.p+'</div>'+
       b.items.map(function(i){return '<div class="ci '+i.s+'"><span class="mk">'+mk[i.s]+'</span><span>'+i.t+'</span></div>';}).join('');
     cg.appendChild(el);
   });
@@ -735,7 +844,7 @@
   var stack=[
     {h:"Systèmes",items:["Debian 12","Windows Server","Linux CLI"]},
     {h:"Réseau",items:["Cisco IOS","VLAN / 802.1Q","HSRP","Routage statique","DHCP / Relay","NAT/PAT","Fortinet"]},
-    {h:"Virtualisation",items:["VMware Workstation","Vagrant"]},
+    {h:"Virtualisation",items:["Proxmox VE","VMware Workstation","Vagrant"]},
     {h:"Conteneurs",items:["Docker","Docker Compose","Nginx Proxy Manager"]},
     {h:"Automatisation",items:["Ansible","Playbooks YAML","IaC"]},
     {h:"Services & données",items:["Apache2","Keepalived","MariaDB","Nextcloud","WordPress","Vaultwarden"]},
@@ -743,7 +852,7 @@
     {h:"Annuaire",items:["Active Directory","AD DS"]},
     {h:"Outils",items:["GLPI","SSH","Git"]}
   ];
-  var sc=document.getElementById('stack');
+  var sc=document.getElementById('stack-grid');
   stack.forEach(function(s){
     var el=document.createElement('div');el.className='scol';
     el.innerHTML='<h3>'+s.h+'</h3><ul>'+s.items.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul>';
