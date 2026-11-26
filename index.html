@@ -137,6 +137,9 @@
   .tl{position:relative;padding:0 0 26px}
   .tl:last-child{padding-bottom:0}
   .tl::before{content:"";position:absolute;left:-28px;top:4px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--accent);transform:translateX(-1px)}
+  .tl.goal::before{border-style:dashed;border-color:var(--warn)}
+  .tl.goal .yr{color:var(--warn)}
+  .tl.goal h3 span{color:var(--warn);font-weight:400}
   .tl .yr{font-family:var(--mono);font-size:.8rem;color:var(--accent)}
   .tl h3{font-size:1.05rem;font-weight:600;margin:3px 0}
   .tl p{color:var(--muted);font-size:.9rem;margin:0}
@@ -166,23 +169,6 @@
   .proj .badge{font-family:var(--mono);font-size:.66rem;color:var(--warn);border:1px solid rgba(251,191,36,.4);background:rgba(251,191,36,.07);padding:2px 7px;border-radius:5px}
   .proj .badge.cr{color:var(--accent-2);border-color:rgba(56,189,248,.4);background:rgba(56,189,248,.07)}
 
-  /* ---- fonctionnement ---- */
-  .how-intro{color:var(--muted);max-width:720px;margin:-12px 0 22px}
-  .how{display:none}
-  .how.open{display:block}
-  .how h3{font-size:1.1rem;font-weight:600}
-  .how .sum{color:var(--muted);margin:6px 0 20px;font-size:.92rem}
-  .steps{list-style:none;margin:0;padding:0;counter-reset:st}
-  .steps li{counter-increment:st;position:relative;padding:0 0 16px 44px;font-size:.9rem;color:var(--muted)}
-  .steps li::before{content:counter(st);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:8px;border:1px solid var(--border-2);background:var(--panel-2);color:var(--accent);font-family:var(--mono);font-size:.78rem;font-weight:700;display:grid;place-items:center}
-  .steps li:not(:last-child)::after{content:"";position:absolute;left:14px;top:30px;bottom:2px;width:1px;background:var(--border-2)}
-  .steps b{display:block;color:var(--txt);font-weight:600}
-  .how .key{border-left:3px solid var(--accent);background:var(--panel-2);padding:12px 15px;border-radius:0 9px 9px 0;font-size:.88rem;color:var(--muted);margin-top:4px}
-  .how .key strong{color:var(--txt)}
-  button.howlink{align-self:flex-start;cursor:pointer;background:transparent;font-family:var(--mono);font-size:.74rem;color:var(--accent);border:1px solid var(--border-2);padding:6px 11px;border-radius:7px}
-  button.howlink:hover{border-color:var(--accent)}
-  .proj .acts{display:flex;flex-wrap:wrap;gap:8px}
-
   /* ---- competences ---- */
   .comp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
   .block{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px}
@@ -210,13 +196,6 @@
   .legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px;font-family:var(--mono);font-size:.76rem;color:var(--muted)}
   .legend b{font-weight:400}
   .legend .m{color:var(--ok)}.legend .mw{color:var(--warn)}.legend .mo{color:var(--faint)}
-
-  /* ---- stack ---- */
-  .stack{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  .scol{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px}
-  .scol h3{font-family:var(--mono);font-size:.8rem;color:var(--accent);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px;font-weight:700}
-  .scol ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:7px}
-  .scol li{font-size:.82rem;color:var(--muted);background:var(--panel-2);border:1px solid var(--border);padding:4px 10px;border-radius:7px}
 
   /* ---- logos ---- */
   .lg{display:block;border-radius:10px;border:1px solid var(--border-2);background:#fff;flex:none;object-fit:cover}
@@ -295,7 +274,6 @@
     .cert .logo.im{max-width:92px;height:38px}
     .profile{grid-template-columns:1fr}
     .grid,.comp-grid,.cert-grid{grid-template-columns:1fr}
-    .stack{grid-template-columns:1fr}
     nav.links{display:none}
     .clock{display:none}
     .brand{margin-right:auto}
@@ -316,10 +294,8 @@
       <a href="#parcours">parcours</a>
       <a href="#entreprise">alternance</a>
       <a href="#realisations">réalisations</a>
-      <a href="#fonctionnement">détails</a>
       <a href="#certifications">formations</a>
       <a href="#competences">compétences</a>
-      <a href="#stack">stack</a>
       <a href="#contact">contact</a>
     </nav>
     <div class="theme" role="group" aria-label="Thème de couleur">
@@ -390,6 +366,11 @@
     <div class="sec-head"><span class="idx">02</span><h2>Parcours</h2><span class="rule"></span></div>
     <div class="card">
       <div class="timeline">
+        <div class="tl goal">
+          <div class="yr mono">2027 → 2028</div>
+          <h3>Licence en alternance — réseaux &amp; sécurité <span>· objectif</span></h3>
+          <p>Poursuivre après le BTS en licence, toujours en alternance, vers un poste orienté réseau : switchs, bornes Wi-Fi et équipements Fortinet.</p>
+        </div>
         <div class="tl wl">
           <div class="tlx">
             <div class="yr mono">2025 → 2027</div>
@@ -450,63 +431,10 @@
   </div>
 </section>
 
-<!-- FONCTIONNEMENT -->
-<section id="fonctionnement">
-  <div class="wrap">
-    <div class="sec-head"><span class="idx">05</span><h2>Comment ça marche</h2><span class="rule"></span></div>
-    <p class="how-intro">Ce qui se passe derrière les manipulations de trois de mes procédures.</p>
-    <div class="filters" id="howtabs">
-      <button type="button" class="filt active" data-how="master">Masterisation</button>
-      <button type="button" class="filt" data-how="deploy">Déploiement logiciel</button>
-      <button type="button" class="filt" data-how="ha">Haute disponibilité</button>
-    </div>
-
-    <div class="card how open" id="how-master">
-      <h3>Masterisation d'un poste par le réseau</h3>
-      <p class="sum">Un <strong>master</strong> est une image de référence de Windows, déjà préparée, que l'on recopie sur les nouveaux PC.</p>
-      <ol class="steps">
-        <li><b>Boot PXE (Échap puis F12)</b>Le PC démarre sur sa carte réseau filaire au lieu de son disque.</li>
-        <li><b>DHCP</b>Il reçoit une adresse IP et les informations de démarrage : quel serveur contacter, quel fichier charger.</li>
-        <li><b>TFTP → WinPE</b>Il télécharge un mini-Windows temporaire, WinPE, qui s'exécute en mémoire. Le disque peut donc être réécrit.</li>
-        <li><b>Saisie du code</b>OS Deployer contacte le serveur. Le code, relevé dans Endpoint Central, désigne la tâche de déploiement, donc le master à appliquer.</li>
-        <li><b>Copie de l'image</b>Windows 11 et le contenu du master sont écrits sur le disque. Le modèle de déploiement définit les réglages appliqués ensuite.</li>
-        <li><b>Redémarrage et contrôles</b>Le PC démarre sur son disque. Je vérifie réseau, agent Endpoint Central, Fortinet, SentinelOne et mises à jour.</li>
-      </ol>
-      <div class="key"><strong>À retenir :</strong> le code ne contient pas Windows, il indique au serveur quoi envoyer au poste.</div>
-    </div>
-
-    <div class="card how" id="how-deploy">
-      <h3>Déploiement d'un logiciel avec Endpoint Central</h3>
-      <p class="sum">Chaque poste du parc a un <strong>agent</strong> qui communique avec la console.</p>
-      <ol class="steps">
-        <li><b>Choisir la configuration</b>Elle décrit le logiciel à installer.</li>
-        <li><b>Définir la cible</b>J'indique le nom du poste concerné, puis j'enregistre.</li>
-        <li><b>Attente de l'agent</b>L'agent vient chercher ses configurations à intervalles réguliers (90 minutes par défaut) ou au démarrage.</li>
-        <li><b>Forcer avec cfgupdate.exe</b>La commande demande à l'agent de récupérer ses configurations tout de suite.</li>
-        <li><b>Installation et suivi</b>L'agent installe le logiciel et le statut remonte dans la console.</li>
-      </ol>
-      <div class="key"><strong>À retenir :</strong> la console ne fait que préparer l'ordre, c'est l'agent du poste qui l'exécute.</div>
-    </div>
-
-    <div class="card how" id="how-ha">
-      <h3>Haute disponibilité web avec Keepalived</h3>
-      <p class="sum">Deux serveurs Apache partagent une <strong>IP virtuelle</strong> (192.168.173.200), la seule adresse utilisée par le client.</p>
-      <ol class="steps">
-        <li><b>Élection</b>Avec VRRP, le serveur à la priorité la plus haute (SRV1 : 100, SRV2 : 90) porte l'IP virtuelle.</li>
-        <li><b>Annonces</b>Le MASTER signale sa présence chaque seconde (advert_int 1).</li>
-        <li><b>Panne</b>Après environ 3 secondes sans annonce, le BACKUP prend l'IP virtuelle.</li>
-        <li><b>Mise à jour du réseau</b>Il envoie un ARP gratuit : les machines associent l'IP à sa carte réseau.</li>
-        <li><b>Retour</b>Quand SRV1 revient, sa priorité plus haute lui fait reprendre l'IP.</li>
-      </ol>
-      <div class="key"><strong>Limite :</strong> cette configuration détecte la perte du serveur ou de Keepalived, pas un arrêt d'Apache seul. Il faudrait ajouter un script de vérification (vrrp_script).</div>
-    </div>
-  </div>
-</section>
-
 <!-- CERTIFICATIONS -->
 <section id="certifications">
   <div class="wrap">
-    <div class="sec-head"><span class="idx">06</span><h2>Certifications &amp; formations</h2><span class="rule"></span></div>
+    <div class="sec-head"><span class="idx">05</span><h2>Certifications &amp; formations</h2><span class="rule"></span></div>
     <p style="color:var(--muted);max-width:720px;margin:-12px 0 26px">Ce que je suis en parallèle du BTS : les <strong style="color:var(--txt);font-weight:600">certifications</strong> d'éditeurs d'un côté, les <strong style="color:var(--txt);font-weight:600">formations en ligne</strong> validées par une attestation de suivi de l'autre.</p>
     <div class="subh"><span>// certifications</span><i></i></div>
     <div class="cert-grid" id="certs"></div>
@@ -518,7 +446,7 @@
 <!-- COMPETENCES -->
 <section id="competences">
   <div class="wrap">
-    <div class="sec-head"><span class="idx">07</span><h2>Compétences — Support &amp; mise à disposition de services</h2><span class="rule"></span></div>
+    <div class="sec-head"><span class="idx">06</span><h2>Compétences — Support &amp; mise à disposition de services</h2><span class="rule"></span></div>
     <p style="color:var(--muted);max-width:720px;margin:-12px 0 26px">Les six blocs de compétences évalués à l'épreuve <span class="mono" style="color:var(--accent);border:1px solid var(--border-2);padding:1px 6px;border-radius:5px">E5</span>, avec le projet que je présente pour chacun et l'état de leur couverture, axes à renforcer compris.</p>
     <a class="doc e5link" href="docs/tableau-synthese-e5.pdf" target="_blank" rel="noopener">▸ Voir mon tableau de synthèse E5 (PDF)</a>
     <div class="comp-grid" id="competences-grid"></div>
@@ -527,14 +455,6 @@
       <span><b class="mw">▣</b> partielle / à renforcer</span>
       <span><b class="mo">▢</b> non abordée</span>
     </div>
-  </div>
-</section>
-
-<!-- STACK -->
-<section id="stack">
-  <div class="wrap">
-    <div class="sec-head"><span class="idx">08</span><h2>Stack technique</h2><span class="rule"></span></div>
-    <div class="stack" id="stack-grid"></div>
   </div>
 </section>
 
@@ -625,7 +545,7 @@
     {t:"Déploiement logiciel — ManageEngine Endpoint Central",dom:"Système",badge:"ent",
      d:"En entreprise : déploiement centralisé d'un logiciel sur un poste du parc via la solution UEM ManageEngine Endpoint Central, avec forçage de l'installation en ligne de commande (cfgupdate).",
      tech:["ManageEngine Endpoint Central","UEM","Déploiement de parc","Windows"],
-     comp:["Déployer un service","Mettre à disposition un service"],doc:"docs/deploiement-endpoint-central.pdf",how:"deploy"},
+     comp:["Déployer un service","Mettre à disposition un service"],doc:"docs/deploiement-endpoint-central.pdf"},
     {t:"Mise à jour IOS & durcissement — switch Cisco 3750",dom:"Réseau",badge:"ent",
      d:"En entreprise : mise à jour de l'IOS d'un switch Cisco Catalyst 3750 par TFTP, puis durcissement complet (VTP, NTP, désactivation de services, AAA, SNMPv3, SSH, bannière). Procédure fournie anonymisée.",
      tech:["Cisco Catalyst 3750","IOS / TFTP","SNMPv3","AAA","Hardening"],
@@ -633,7 +553,7 @@
     {t:"Masterisation de postes — ManageEngine OS Deployer (PXE)",dom:"Système",badge:"ent",
      d:"En entreprise : préparation et masterisation de nouveaux postes selon le profil métier (journalistes, DSI, réseau presse…) — identification du master dans Endpoint Central, déploiement par boot réseau PXE / OS Deployer (WinPE), puis contrôles de conformité (agents de sécurité, mises à jour) avant mise en service.",
      tech:["ManageEngine OS Deployer","PXE / WinPE","Masterisation","SentinelOne / Fortinet","Windows 11"],
-     comp:["Recenser les ressources numériques","Collecter & orienter des demandes","Déployer un service","Tests d'intégration & acceptation"],doc:"docs/masterisation-pc.pdf",how:"master"},
+     comp:["Recenser les ressources numériques","Collecter & orienter des demandes","Déployer un service","Tests d'intégration & acceptation"],doc:"docs/masterisation-pc.pdf"},
     {t:"Portail de mot de passe en libre-service — ADSelfService Plus",dom:"Sécurité",badge:"ent",
      d:"En entreprise : installation et configuration du portail ADSelfService Plus (ManageEngine) pour la réinitialisation de mot de passe et le déverrouillage de compte en libre-service — intégration Active Directory, sécurisation HTTPS par certificat SSL, MFA et déploiement de l'agent, avec tests d'inscription et de réinitialisation côté utilisateur.",
      tech:["ADSelfService Plus","Active Directory","Certificat SSL / HTTPS","MFA","Self-service password"],
@@ -649,7 +569,7 @@
     {t:"Haute disponibilité Web — Keepalived",dom:"Système",badge:"cr",
      d:"Deux serveurs web Debian avec une IP virtuelle (VRRP) et bascule automatique MASTER/BACKUP en cas de panne, avec notifications mail du failover.",
      tech:["Apache2","Keepalived","VRRP","VIP","Debian 12"],
-     comp:["Continuité de service","Tests d'intégration & acceptation"],doc:"docs/ha-keepalived-robin.pdf",how:"ha"},
+     comp:["Continuité de service","Tests d'intégration & acceptation"],doc:"docs/ha-keepalived-robin.pdf"},
     {t:"Haute disponibilité passerelle — HSRP",dom:"Réseau",badge:"",
      d:"Passerelle redondante pour deux VLAN via HSRP : routeur virtuel actif/passif (preempt), routage inter-VLAN par sous-interfaces 802.1Q, vérification du basculement.",
      tech:["Cisco IOS","VLAN","802.1Q","HSRP","Switch"],
@@ -721,8 +641,7 @@
         '<p>'+p.d+'</p>'+
         '<div class="tech">'+p.tech.map(function(x){return '<span>'+x+'</span>';}).join('')+'</div>'+
         '<div class="comp">'+p.comp.map(function(x){return '<span>'+x+'</span>';}).join('')+'</div>'+
-        '<div class="acts">'+(p.how ? '<button type="button" class="howlink" data-how="'+p.how+'">▸ Comment ça marche</button>' : '')+
-        (p.doc ? '<a class="doc" href="'+p.doc+'" target="_blank" rel="noopener">▸ Voir la procédure (PDF)</a>' : '')+'</div>';
+        (p.doc ? '<a class="doc" href="'+p.doc+'" target="_blank" rel="noopener">▸ Voir la procédure (PDF)</a>' : '');
       pc.appendChild(el);
     });
   }
@@ -737,19 +656,6 @@
     fc.appendChild(b);
   });
   render("Tous");
-
-  /* ---------- fonctionnement ---------- */
-  function showHow(id){
-    document.querySelectorAll('#howtabs .filt').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-how')===id);});
-    document.querySelectorAll('.how').forEach(function(c){c.classList.toggle('open',c.id==='how-'+id);});
-  }
-  document.querySelectorAll('#howtabs .filt').forEach(function(b){b.addEventListener('click',function(){showHow(b.getAttribute('data-how'));});});
-  pc.addEventListener('click',function(e){
-    var b=e.target.closest('button.howlink');
-    if(!b) return;
-    showHow(b.getAttribute('data-how'));
-    document.getElementById('fonctionnement').scrollIntoView();
-  });
 
   /* ---------- competences E5 ---------- */
   var blocks=[
@@ -847,25 +753,6 @@
   var slot2=document.createElement('div');slot2.className='cert slot';
   slot2.innerHTML='<p>// emplacement libre<br>prochaine formation en ligne</p>';
   grids.elearn.appendChild(slot2);
-
-  /* ---------- stack ---------- */
-  var stack=[
-    {h:"Systèmes",items:["Debian 12","Windows Server","Linux CLI"]},
-    {h:"Réseau",items:["Cisco IOS","VLAN / 802.1Q","HSRP","Routage statique","DHCP / Relay","NAT/PAT","Fortinet"]},
-    {h:"Virtualisation",items:["Proxmox VE","VMware Workstation","Vagrant"]},
-    {h:"Conteneurs",items:["Docker","Docker Compose","Nginx Proxy Manager"]},
-    {h:"Automatisation",items:["Ansible","Playbooks YAML","IaC"]},
-    {h:"Services & données",items:["Apache2","Keepalived","MariaDB","Nextcloud","WordPress","Vaultwarden"]},
-    {h:"Sécurité",items:["pfSense","Pare-feu"]},
-    {h:"Annuaire",items:["Active Directory","AD DS"]},
-    {h:"Outils",items:["GLPI","SSH","Git"]}
-  ];
-  var sc=document.getElementById('stack-grid');
-  stack.forEach(function(s){
-    var el=document.createElement('div');el.className='scol';
-    el.innerHTML='<h3>'+s.h+'</h3><ul>'+s.items.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul>';
-    sc.appendChild(el);
-  });
 
   /* ---------- nav active on scroll ---------- */
   var secs=[].slice.call(document.querySelectorAll('section[id]'));
